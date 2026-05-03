@@ -65,13 +65,33 @@ function setRole(r,el){
   if(el)el.classList.add('on');
 }
 
+//Theme
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.setAttribute('data-theme', savedTheme);
+    updateThemeToggle(savedTheme);
+}
+
+function toggleTheme() {
+    const current = document.body.getAttribute('data-theme');
+    const newTheme = current === 'light' ? 'dark' : 'light';
+    document.body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeToggle(newTheme);
+}
+
+function updateThemeToggle(theme) {
+    // Update UI text/icons in profile/settings
+}   
+
+//Login
 function doLogin(){
   const name=document.getElementById('ln').value.trim();
   const email=document.getElementById('le').value.trim();
   const pw=document.getElementById('lp').value;
-  if(!name){toast('Please enter your name','err');return;}
-  if(!email){toast('Please enter your email','err');return;}
-  if(!pw){toast('Please enter your password','err');return;}
+  if(!name){showError(document.getElementById('ln'), 'Please enter your name');return;}
+  if(!validateEmail(email)){showError(document.getElementById('le'), 'Please enter a valid email');return;}
+  if(!validatePassword(pw)){showError(document.getElementById('lp'), 'Password must be 8+ chars with 3 of: uppercase, lowercase, number, special character');return;}
   usr={name,email,role};
   if(role==='admin'){
     showChatbot(false);
@@ -95,6 +115,7 @@ function doLogin(){
   toast(`Welcome, ${name}! 🎉`,'suc');
 }
 
+//Register
 function doRegister(){
   const n=document.getElementById('rn').value.trim(),
         e=document.getElementById('re').value.trim(),
@@ -105,6 +126,34 @@ function doRegister(){
   setTimeout(()=>gp('login-page'),900);
 }
 
+// Email must contain @ and a valid domain
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// Password: 8+ chars, 3 of 4 categories
+function validatePassword(password) {
+    const hasUpper = /[A-Z]/.test(password);
+    const hasLower = /[a-z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecial = /[!@#$%^&*]/.test(password);
+    const validCategories = [hasUpper, hasLower, hasNumber, hasSpecial].filter(Boolean).length;
+    return password.length >= 8 && validCategories >= 3;
+}
+
+// Display error below the input
+function showError(input, message) {
+    let errorDiv = input.nextElementSibling;
+    if (!errorDiv || !errorDiv.classList.contains('error-message')) {
+        errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        input.parentNode.insertBefore(errorDiv, input.nextSibling);
+    }
+    errorDiv.textContent = message;
+} 
+
+//Logout
 function doLogout(){
   uChartsInit=false;aChartsInit=false;rChartsInit=false;
   showChatbot(false);
@@ -144,14 +193,7 @@ function bOpts(d){
     scales:d?undefined:{x:{grid:{color:C.grid},ticks:C.tk},y:{grid:{color:C.grid},ticks:{...C.tk,stepSize:1},beginAtZero:true}}
   };
 }
-function initUCharts(){
-  if(uChartsInit)return;uChartsInit=true;
-  new Chart(document.getElementById('tC'),{type:'line',data:{labels:['Sep','Oct','Nov','Dec','Jan','Feb'],datasets:[
-    {data:[0,0,1,1,2,1],borderColor:C.bB,backgroundColor:'rgba(59,130,246,.1)',tension:.4,fill:true,pointBackgroundColor:C.bB,pointRadius:4,borderWidth:2},
-    {data:[0,0,0,1,1,0],borderColor:C.cB,backgroundColor:'rgba(34,211,238,.06)',tension:.4,fill:true,pointBackgroundColor:C.cB,pointRadius:4,borderWidth:2,borderDash:[5,5]}
-  ]},options:bOpts(false)});
-  new Chart(document.getElementById('dC'),{type:'doughnut',data:{labels:['Pending','Accepted','Resolved'],datasets:[{data:[1,1,1],backgroundColor:[C.a,C.b,C.g],borderColor:[C.aB,C.bB,C.gB],borderWidth:2}]},options:{...bOpts(true),cutout:'62%'}});
-}
+
 function initACharts(){
   if(aChartsInit)return;aChartsInit=true;
   new Chart(document.getElementById('atC'),{type:'line',data:{labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],datasets:[
@@ -196,7 +238,6 @@ function renderUC(){
     <td style="font-size:12px">${c.cat}</td>
     <td>${pbk(c.pri)}</td><td>${bk(c.status)}</td>
     <td style="color:var(--muted)">${c.date}</td>
-    <td><div class="abtn"><button class="ib" onclick="vC('${c.id}')">👁 View</button></div></td>
   </tr>`).join('');
 }
 function renderAA(){

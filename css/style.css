@@ -333,6 +333,24 @@ html,body{height:100%;font-family:var(--font-body);background:var(--bg);color:va
   border-radius:var(--r2);padding:2.8rem 2.5rem;
   width:100%;max-width:440px;box-shadow:var(--sh)
 }
+
+/* ═══════════════════════════════════════
+   THEMES
+═══════════════════════════════════════ */
+/* Define default (light) values */
+:root {
+  --bg3: #ffffff;
+  --border: #d0d0d0;
+  --muted: #666666;
+}
+
+/* Override for dark theme */
+body[data-theme="dark"] {
+  --bg3: #1a1a1a;
+  --border: #444444;
+  --muted: #aaaaaa;
+}
+
 .auth-logo{text-align:center;margin-bottom:2rem}
 .auth-ico{
   width:58px;height:58px;background:linear-gradient(135deg,var(--g1),var(--g3));
@@ -362,6 +380,13 @@ html,body{height:100%;font-family:var(--font-body);background:var(--bg);color:va
 .auth-ft a{color:var(--g3);cursor:pointer;font-weight:500}
 .demo-hint{margin-top:1rem;padding:.75rem 1rem;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.18);border-radius:var(--r);font-size:12px;color:var(--muted)}
 .demo-hint b{color:var(--g3)}
+
+/* Position error message below input */
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 4px;
+}
 
 /* phone wrap */
 .phone-wrap{display:flex;align-items:stretch;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .22s}
@@ -422,7 +447,6 @@ html,body{height:100%;font-family:var(--font-body);background:var(--bg);color:va
 .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
 .ch h3{font-family:var(--font-head);font-size:14px;font-weight:700;letter-spacing:-.2px}
 .cw{position:relative;height:210px}
-.crow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
 
 /* TABLE */
 .ct{width:100%;border-collapse:collapse;font-size:13px}
