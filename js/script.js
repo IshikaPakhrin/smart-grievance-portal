@@ -213,42 +213,31 @@ function renderUC(){
   </tr>`).join('');
 }  
 
-function updateDashboard() {
+function updateAndAnimate() {
   const total = data.length;
   const pending = data.filter(c => c.status.toLowerCase() === "pending").length;
   const resolved = data.filter(c => c.status.toLowerCase() === "resolved").length;
   const accepted = data.filter(c => c.status.toLowerCase() === "accepted").length;
 
+  const values = [total, pending, resolved, accepted];
   const counters = document.querySelectorAll(".sc-val");
 
-  counters[0].dataset.count = total;
-  counters[1].dataset.count = pending;
-  counters[2].dataset.count = resolved;
-  counters[3].dataset.count = accepted;
-} 
-
-function animCounts(){
-  document.querySelectorAll('.sc-val').forEach(el=>{
-    const target = parseInt(el.dataset.count) || 0;
+  counters.forEach((el, i) => {
+    let target = values[i];
     let c2 = 0;
     const step = Math.max(1, Math.ceil(target/30));
 
-    const iv = setInterval(()=>{
+    const iv = setInterval(() => {
       c2 = Math.min(c2 + step, target);
       el.textContent = c2;
-      if(c2 >= target) clearInterval(iv);
-    },40);
+      if (c2 >= target) clearInterval(iv);
+    }, 40);
   });
-  console.log("animCounts running", el.dataset.count);
 }
 
 window.onload = () => {
   renderUC();
-  updateDashboard();
-
-  setTimeout(() => {
-    animCounts();
-  }, 100); // slight delay ensures DOM is ready
+  updateAndAnimate();
 };
 
 function renderAA(){
