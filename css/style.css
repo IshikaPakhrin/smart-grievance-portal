@@ -334,23 +334,6 @@ html,body{height:100%;font-family:var(--font-body);background:var(--bg);color:va
   width:100%;max-width:440px;box-shadow:var(--sh)
 }
 
-/* ═══════════════════════════════════════
-   THEMES
-═══════════════════════════════════════ */
-/* Define default (light) values */
-:root {
-  --bg3: #ffffff;
-  --border: #d0d0d0;
-  --muted: #666666;
-}
-
-/* Override for dark theme */
-body[data-theme="dark"] {
-  --bg3: #1a1a1a;
-  --border: #444444;
-  --muted: #aaaaaa;
-}
-
 .auth-logo{text-align:center;margin-bottom:2rem}
 .auth-ico{
   width:58px;height:58px;background:linear-gradient(135deg,var(--g1),var(--g3));

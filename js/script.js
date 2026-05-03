@@ -64,26 +64,7 @@ function setRole(r,el){
   document.querySelectorAll('.rtab').forEach(t=>t.classList.remove('on'));
   if(el)el.classList.add('on');
 }
-
-//Theme
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.body.setAttribute('data-theme', savedTheme);
-    updateThemeToggle(savedTheme);
-}
-
-function toggleTheme() {
-    const current = document.body.getAttribute('data-theme');
-    const newTheme = current === 'light' ? 'dark' : 'light';
-    document.body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeToggle(newTheme);
-}
-
-function updateThemeToggle(theme) {
-    // Update UI text/icons in profile/settings
-}   
-
+ 
 //Login
 function doLogin(){
   const name=document.getElementById('ln').value.trim();
