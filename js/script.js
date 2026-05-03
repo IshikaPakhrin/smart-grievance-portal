@@ -217,17 +217,17 @@ function renderUC(){
 }  
 
 function updateDashboard() {
-  console.log(document.getElementById("totalCount"));
-  
   const total = data.length;
-  const pending = data.filter(c => c.status === "Pending").length;
-  const resolved = data.filter(c => c.status === "Resolved").length;
-  const accepted = data.filter(c => c.status === "Accepted").length;
+  const pending = data.filter(c => c.status.toLowerCase() === "pending").length;
+  const resolved = data.filter(c => c.status.toLowerCase() === "resolved").length;
+  const accepted = data.filter(c => c.status.toLowerCase() === "accepted").length;
 
-  document.getElementById("totalCount").setAttribute("data-count", total);
-  document.getElementById("pendingCount").setAttribute("data-count", pending);
-  document.getElementById("resolvedCount").setAttribute("data-count", resolved);
-  document.getElementById("acceptedCount").setAttribute("data-count", accepted);
+  const counters = document.querySelectorAll(".sc-val");
+
+  counters[0].dataset.count = total;
+  counters[1].dataset.count = pending;
+  counters[2].dataset.count = resolved;
+  counters[3].dataset.count = accepted;
 }
 
 function animCounts(){
