@@ -90,9 +90,6 @@ function doLogin(){
     document.getElementById('pname').value=name;
     document.getElementById('pemail').value=email;
     gp('user-portal');
-    renderUC();
-    setTimeout(()=>{initUCharts();animCounts();},250);
-  }
   toast(`Welcome, ${name}! 🎉`,'suc');
 }
 
@@ -230,16 +227,17 @@ function updateDashboard() {
   counters[3].textContent = accepted;
 }
 
-//function animCounts(){
+function animCounts(){
   document.querySelectorAll('[data-count]').forEach(el=>{
     const target=parseInt(el.dataset.count);let c2=0;const step=Math.max(1,Math.ceil(target/30));
     const iv=setInterval(()=>{c2=Math.min(c2+step,target);el.textContent=c2;if(c2>=target)clearInterval(iv);},40);
   });
-//}
+}
 
 window.onload = () => {
   renderUC();
   updateDashboard();
+  animCounts();
 };
 
 function renderAA(){
