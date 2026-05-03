@@ -214,29 +214,18 @@ function renderUC(){
     <td>${pbk(c.pri)}</td><td>${bk(c.status)}</td>
     <td style="color:var(--muted)">${c.date}</td>
   </tr>`).join('');
-
-  // Calculate counts from the data array
-  const total = data.length;
-  const pending = data.filter(c => c.status === 'Pending').length;
-  const resolved = data.filter(c => c.status === 'Resolved').length;
-  const accepted = data.filter(c => c.status === 'Accepted').length;
-
-  // Update the data-count attribute for each counter
-  document.querySelector('.sc-val[data-count]').setAttribute('data-count', total);
-  document.querySelectorAll('.sc-val')[1].setAttribute('data-count', pending);
-  document.querySelectorAll('.sc-val')[2].setAttribute('data-count', resolved);
-  document.querySelectorAll('.sc-val')[3].setAttribute('data-count', accepted);
 }  
+
 function updateDashboard() {
   const total = data.length;
   const pending = data.filter(c => c.status === "Pending").length;
   const resolved = data.filter(c => c.status === "Resolved").length;
   const accepted = data.filter(c => c.status === "Accepted").length;
 
-  document.getElementById("totalCount").dataset.count = total;
-  document.getElementById("pendingCount").dataset.count = pending;
-  document.getElementById("resolvedCount").dataset.count = resolved;
-  document.getElementById("acceptedCount").dataset.count = accepted;
+  document.getElementById("totalCount").setAttribute("data-count", total);
+  document.getElementById("pendingCount").setAttribute("data-count", pending);
+  document.getElementById("resolvedCount").setAttribute("data-count", resolved);
+  document.getElementById("acceptedCount").setAttribute("data-count", accepted);
 }
 
 function animCounts(){
