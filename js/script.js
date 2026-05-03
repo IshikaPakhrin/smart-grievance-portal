@@ -78,7 +78,6 @@ function doLogin(){
     showChatbot(false);
     const el=document.getElementById('adminName');if(el)el.textContent=name;
     gp('admin-portal');
-    setTimeout(()=>{initACharts();animCounts();},250);
   } else {
     showChatbot(true);
     const initials=getInitials(name);
