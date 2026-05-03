@@ -221,25 +221,34 @@ function updateDashboard() {
 
   const counters = document.querySelectorAll(".sc-val");
 
-  counters[0].textContent = total;
-  counters[1].textContent = pending;
-  counters[2].textContent = resolved;
-  counters[3].textContent = accepted;
-}
+  counters[0].dataset.count = total;
+  counters[1].dataset.count = pending;
+  counters[2].dataset.count = resolved;
+  counters[3].dataset.count = accepted;
+} 
 
 function animCounts(){
-  document.querySelectorAll('[data-count]').forEach(el=>{
-    const target=parseInt(el.dataset.count);let c2=0;const step=Math.max(1,Math.ceil(target/30));
-    const iv=setInterval(()=>{c2=Math.min(c2+step,target);el.textContent=c2;if(c2>=target)clearInterval(iv);},40);
+  document.querySelectorAll('.sc-val').forEach(el=>{
+    const target = parseInt(el.dataset.count) || 0;
+    let c2 = 0;
+    const step = Math.max(1, Math.ceil(target/30));
+
+    const iv = setInterval(()=>{
+      c2 = Math.min(c2 + step, target);
+      el.textContent = c2;
+      if(c2 >= target) clearInterval(iv);
+    },40);
   });
+  console.log("animCounts running", el.dataset.count);
 }
 
 window.onload = () => {
   renderUC();
   updateDashboard();
-  initACharts();   // optional (charts)
-  initRCharts();   // optional (charts)
-  animCounts();
+
+  setTimeout(() => {
+    animCounts();
+  }, 100); // slight delay ensures DOM is ready
 };
 
 function renderAA(){
