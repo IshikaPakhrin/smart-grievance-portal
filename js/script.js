@@ -92,6 +92,7 @@ function doLogin(){
     gp('user-portal');
   toast(`Welcome, ${name}! 🎉`,'suc');
 }
+}
 
 //Register
 function doRegister(){
@@ -237,6 +238,8 @@ function animCounts(){
 window.onload = () => {
   renderUC();
   updateDashboard();
+  initACharts();   // optional (charts)
+  initRCharts();   // optional (charts)
   animCounts();
 };
 
