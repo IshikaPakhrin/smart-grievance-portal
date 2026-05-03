@@ -217,6 +217,8 @@ function renderUC(){
 }  
 
 function updateDashboard() {
+  console.log(document.getElementById("totalCount"));
+  
   const total = data.length;
   const pending = data.filter(c => c.status === "Pending").length;
   const resolved = data.filter(c => c.status === "Resolved").length;
