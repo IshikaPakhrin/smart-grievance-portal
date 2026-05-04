@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
 
-<body>
+<body id="portal">
 <!-- Portal BG (hidden behind landing) -->
 <div class="bg-wrap"><div class="bg-grid"></div></div>
 <div id="cur"></div><div id="cdot"></div>
@@ -313,6 +313,7 @@
     <div class="mh">
       <div><h1 id="ust">Dashboard</h1><p id="uss">Welcome back, <span id="uwn">User</span>! Here's your overview.</p></div>
       <div class="hact">
+        <button id="themeToggle" class="btn btn-o btn-sm">🌙</button>
         <button class="nbell" onclick="tn()">🔔<span class="ndot"></span></button>
         <button class="btn btn-o btn-sm" onclick="doLogout()">Logout</button>
       </div>
@@ -502,6 +503,7 @@
     <div class="mh">
       <div><h1 id="ast">Admin Dashboard</h1><p id="ass">System overview & complaint management</p></div>
       <div class="hact">
+        <button id="themeToggle" class="btn btn-o btn-sm">🌙</button>
         <button class="nbell" onclick="tn()">🔔<span class="ndot"></span></button>
         <button class="btn btn-g btn-sm" onclick="exportR()">📥 Export CSV</button>
         <button class="btn btn-o btn-sm" onclick="doLogout()">Logout</button>

@@ -238,6 +238,14 @@ function updateAndAnimate() {
 window.onload = () => {
   renderUC();
   updateAndAnimate();
+  const saved = localStorage.getItem("theme");
+  const portal = document.getElementById("portal");
+
+  if(saved === "dark"){
+    portal.classList.add("dark");
+  }
+
+  initThemeToggle(); 
 };
 
 function renderAA(){
@@ -370,6 +378,23 @@ function tn(){notifOpen=!notifOpen;document.getElementById('NP').classList.toggl
 document.addEventListener('click',e=>{
   if(notifOpen&&!e.target.closest('.nbell')&&!e.target.closest('.np')){notifOpen=false;document.getElementById('NP').classList.remove('show');}
 });
+
+// ── THEME TOGGLE ──
+function initThemeToggle(){
+  const portal = document.getElementById("portal");
+  const btn = document.getElementById("themeToggle");
+
+  if(!btn || !portal) return; // safety
+
+  btn.onclick = () => {
+    portal.classList.toggle("dark");
+
+    const isDark = portal.classList.contains("dark");
+    btn.textContent = isDark ? "☀️" : "🌙";
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  };
+}
 
 // ── CHATBOT ──
 const BOTS={submit:'Go to Submit Complaint in the sidebar. AI can auto-categorize your issue!',status:'Use Track Status and enter your GRV-001 format ID.',hello:'Hello! 👋 How can I assist you today?',hi:'Hi there! 😊 Ask me anything about the portal!',help:'I can help with submitting complaints, tracking status, and account settings.',priority:'High = urgent civic issues (no water/power, dangerous roads). Low = general improvements.',default:'I can help with complaints and portal navigation. Could you rephrase? 🤔'};
