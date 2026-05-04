@@ -29,37 +29,71 @@
   --font-head:'Syne',sans-serif;
   --font-body:'DM Sans',sans-serif;
 }
-/*portal */
+/* portal */
 #portal {
-  --bg:#ffffff;
-  --bg2:#f8fafc;
-  --bg3:#eef2f7;
-  --border:rgba(0,0,0,0.08);
-  --text:#111827;
-  --muted:rgba(17,24,39,0.5);
-
-  --sh:0 20px 60px rgba(0,0,0,0.1);
-  --sh-b:0 4px 28px rgba(59,130,246,0.1);
+  --bg: #ffffff;
+  --bg2: #f8fafc;
+  --bg3: #eef2f7;
+  --border: rgba(0,0,0,0.08);
+  --text: #111827;
+  --muted: rgba(17,24,39,0.5);
+  --sh: 0 20px 60px rgba(0,0,0,0.1);
+  --sh-b: 0 4px 28px rgba(59,130,246,0.1);
+  background: var(--bg);
+  color: var(--text);
 }
-/*portal dark */
+
+#portal .sidebar,
+#portal nav,
+#portal aside {
+  background: var(--bg2);
+  color: var(--text);
+  border-right: 1px solid var(--border);
+}
+
+#portal .topbar,
+#portal header {
+  background: var(--bg);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+
+#portal .main-content,
+#portal main,
+#portal .content {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ← span removed to protect badge/status colors */
+#portal h1,
+#portal h2,
+#portal h3,
+#portal h4,
+#portal p,
+#portal label {
+  color: var(--text);
+}
+
+#portal .muted,
+#portal .subtitle,
+#portal small {
+  color: var(--muted);
+}
+
+/* portal dark */
 #portal.dark {
-  --bg:#0B0F1A;
-  --bg2:#0F1320;
-  --bg3:#141C2E;
-  --border:rgba(255,255,255,0.07);
-  --text:#F1F5F9;
-  --muted:rgba(241,245,249,0.44);
-
-  --sh:0 20px 60px rgba(0,0,0,0.55);
-  --sh-b:0 4px 28px rgba(59,130,246,0.2);
+  --bg: #0B0F1A;
+  --bg2: #0F1320;
+  --bg3: #141C2E;
+  --border: rgba(255,255,255,0.07);
+  --text: #F1F5F9;
+  --muted: rgba(241,245,249,0.44);
+  --sh: 0 20px 60px rgba(0,0,0,0.55);
+  --sh-b: 0 4px 28px rgba(59,130,246,0.2);
 }
-/* ── INPUT VISIBILITY FIX ── */
-#portal #portal input,
-#portal #portal textarea,
-#portal #portal select,
-#portal .card input,
-#portal .card textarea,
-#portal .card select,
+
+/* input fix */
 #portal input,
 #portal textarea,
 #portal select {
@@ -80,19 +114,19 @@
   -webkit-text-fill-color: var(--text);
   -webkit-box-shadow: 0 0 0 1000px var(--bg2) inset;
 }
+
+/* body */
 html, body {
   height: 100%;
   font-family: var(--font-body);
-  /* ↓ only set bg/color on body when there's NO portal (landing page) */
   background: var(--land-bg);
   color: var(--text);
   overflow: hidden;
   font-size: 15px;
 }
 
-/* When portal is active, let portal control its own bg */
 body:has(#portal) {
-  background: #ffffff; /* neutral — portal paints its own bg */
+  background: #ffffff;
 }
 
 #app { height: 100vh; overflow: hidden; position: relative; }
