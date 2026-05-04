@@ -29,107 +29,8 @@
   --font-head:'Syne',sans-serif;
   --font-body:'DM Sans',sans-serif;
 }
-/* portal */
-#portal {
-  --bg: #ffffff;
-  --bg2: #f8fafc;
-  --bg3: #eef2f7;
-  --border: rgba(0,0,0,0.08);
-  --text: #111827;
-  --muted: rgba(17,24,39,0.5);
-  --sh: 0 20px 60px rgba(0,0,0,0.1);
-  --sh-b: 0 4px 28px rgba(59,130,246,0.1);
-  background: var(--bg);
-  color: var(--text);
-}
-
-#portal .sidebar,
-#portal nav,
-#portal aside {
-  background: var(--bg2);
-  color: var(--text);
-  border-right: 1px solid var(--border);
-}
-
-#portal .topbar,
-#portal header {
-  background: var(--bg);
-  color: var(--text);
-  border-bottom: 1px solid var(--border);
-}
-
-#portal .main-content,
-#portal main,
-#portal .content {
-  background: var(--bg);
-  color: var(--text);
-}
-
-/* ← span removed to protect badge/status colors */
-#portal h1,
-#portal h2,
-#portal h3,
-#portal h4,
-#portal p,
-#portal label {
-  color: var(--text);
-}
-
-#portal .muted,
-#portal .subtitle,
-#portal small {
-  color: var(--muted);
-}
-
-/* portal dark */
-#portal.dark {
-  --bg: #0B0F1A;
-  --bg2: #0F1320;
-  --bg3: #141C2E;
-  --border: rgba(255,255,255,0.07);
-  --text: #F1F5F9;
-  --muted: rgba(241,245,249,0.44);
-  --sh: 0 20px 60px rgba(0,0,0,0.55);
-  --sh-b: 0 4px 28px rgba(59,130,246,0.2);
-}
-
-/* input fix */
-#portal input,
-#portal textarea,
-#portal select {
-  color: var(--text);
-  background: var(--bg2);
-  caret-color: var(--text);
-  border: 1px solid var(--border);
-}
-
-#portal input::placeholder,
-#portal textarea::placeholder {
-  color: var(--muted);
-  opacity: 1;
-}
-
-#portal input:-webkit-autofill,
-#portal input:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--text);
-  -webkit-box-shadow: 0 0 0 1000px var(--bg2) inset;
-}
-
-/* body */
-html, body {
-  height: 100%;
-  font-family: var(--font-body);
-  background: var(--land-bg);
-  color: var(--text);
-  overflow: hidden;
-  font-size: 15px;
-}
-
-body:has(#portal) {
-  background: #ffffff;
-}
-
-#app { height: 100vh; overflow: hidden; position: relative; }
+html,body{height:100%;font-family:var(--font-body);background:var(--bg);color:var(--text);overflow:hidden;font-size:15px}
+#app{height:100vh;overflow:hidden;position:relative}
 
 /* ═══════════════════════════════════════
    GLOBAL BG (portals)
@@ -433,6 +334,23 @@ body:has(#portal) {
   width:100%;max-width:440px;box-shadow:var(--sh)
 }
 
+/* ═══════════════════════════════════════
+   THEMES
+═══════════════════════════════════════ */
+/* Define default (light) values */
+:root {
+  --bg3: #ffffff;
+  --border: #d0d0d0;
+  --muted: #666666;
+}
+
+/* Override for dark theme */
+body[data-theme="dark"] {
+  --bg3: #1a1a1a;
+  --border: #444444;
+  --muted: #aaaaaa;
+}
+
 .auth-logo{text-align:center;margin-bottom:2rem}
 .auth-ico{
   width:58px;height:58px;background:linear-gradient(135deg,var(--g1),var(--g3));
@@ -463,11 +381,17 @@ body:has(#portal) {
 .demo-hint{margin-top:1rem;padding:.75rem 1rem;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.18);border-radius:var(--r);font-size:12px;color:var(--muted)}
 .demo-hint b{color:var(--g3)}
 
-/* Position error message below input */
+/* ── INLINE FIELD ERRORS ── */
 .error-message {
-    color: red;
-    font-size: 0.8em;
-    margin-top: 4px;
+  color: #EF4444;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+  font-weight: 500;
+}
+.input-err {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important;
 }
 
 /* phone wrap */
@@ -511,19 +435,6 @@ body:has(#portal) {
 .hact{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .nbell{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:.48rem .65rem;cursor:pointer;font-size:17px;position:relative;transition:all .18s}
 .nbell:hover{background:rgba(59,130,246,.1)}
-.themeToggle{
-  background:var(--bg3);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:.48rem .65rem;
-  cursor:pointer;
-  font-size:17px;
-  color:var(--text);
-  transition:all .18s;
-}
-.themeToggle:hover{
-  background:rgba(59,130,246,.1);
-}
 .ndot{position:absolute;top:4px;right:4px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:2px solid var(--bg2)}
 .sv{display:none}.sv.on{display:block}
 

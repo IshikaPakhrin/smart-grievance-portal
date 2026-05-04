@@ -65,33 +65,51 @@ function setRole(r,el){
   if(el)el.classList.add('on');
 }
  
-//Login
-function doLogin(){
-  const name=document.getElementById('ln').value.trim();
-  const email=document.getElementById('le').value.trim();
-  const pw=document.getElementById('lp').value;
-  if(!name){showError(document.getElementById('ln'), 'Please enter your name');return;}
-  if(!validateEmail(email)){showError(document.getElementById('le'), 'Please enter a valid email');return;}
-  if(!validatePassword(pw)){showError(document.getElementById('lp'), 'Password must be 8+ chars with 3 of: uppercase, lowercase, number, special character');return;}
-  usr={name,email,role};
-  if(role==='admin'){
+function doLogin() {
+  clearAllErrors();
+  const name  = document.getElementById('ln').value.trim();
+  const email = document.getElementById('le').value.trim();
+  const pw    = document.getElementById('lp').value;
+
+  let valid = true;
+  if (!name) {
+    showError(document.getElementById('ln'), 'Please enter your full name');
+    valid = false;
+  }
+  if (!validateEmail(email)) {
+    showError(document.getElementById('le'), 'Please enter a valid email address');
+    valid = false;
+  }
+  if (!validatePassword(pw)) {
+    showError(document.getElementById('lp'), 'Password must be 8+ chars with 3 of: uppercase, lowercase, number, special character');
+    valid = false;
+  }
+  if (!valid) return;
+
+  usr = { name, email, role };
+  if (role === 'admin') {
     showChatbot(false);
-    const el=document.getElementById('adminName');if(el)el.textContent=name;
+    const el = document.getElementById('adminName');
+    if (el) el.textContent = name;
     gp('admin-portal');
+    setTimeout(() => { initACharts(); animCounts(); }, 250);
   } else {
     showChatbot(true);
-    const initials=getInitials(name);
-    document.getElementById('uwn').textContent=name;
-    document.getElementById('usn').textContent=name;
-    document.getElementById('uav').textContent=initials;
-    document.getElementById('pav').textContent=initials;
-    document.getElementById('pn').textContent=name;
-    document.getElementById('pname').value=name;
-    document.getElementById('pemail').value=email;
+    const initials = getInitials(name);
+    document.getElementById('uwn').textContent = name;
+    document.getElementById('usn').textContent = name;
+    document.getElementById('uav').textContent = initials;
+    document.getElementById('pav').textContent = initials;
+    document.getElementById('pn').textContent = name;
+    document.getElementById('pname').value = name;
+    document.getElementById('pemail').value = email;
     gp('user-portal');
-  toast(`Welcome, ${name}! 🎉`,'suc');
+    renderUC();
+    setTimeout(() => { initUCharts(); animCounts(); }, 250);
+  }
+  toast(`Welcome, ${name}! 🎉`, 'suc');
 }
-}
+
 
 //Register
 function doRegister(){
@@ -104,32 +122,41 @@ function doRegister(){
   setTimeout(()=>gp('login-page'),900);
 }
 
-// Email must contain @ and a valid domain
+// ── VALIDATION HELPERS ──
 function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Password: 8+ chars, 3 of 4 categories
 function validatePassword(password) {
-    const hasUpper = /[A-Z]/.test(password);
-    const hasLower = /[a-z]/.test(password);
-    const hasNumber = /\d/.test(password);
-    const hasSpecial = /[!@#$%^&*]/.test(password);
-    const validCategories = [hasUpper, hasLower, hasNumber, hasSpecial].filter(Boolean).length;
-    return password.length >= 8 && validCategories >= 3;
+  const hasUpper = /[A-Z]/.test(password);
+  const hasLower = /[a-z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSpecial = /[!@#$%^&*]/.test(password);
+  const valid = [hasUpper, hasLower, hasNumber, hasSpecial].filter(Boolean).length;
+  return password.length >= 8 && valid >= 3;
 }
 
-// Display error below the input
 function showError(input, message) {
-    let errorDiv = input.nextElementSibling;
-    if (!errorDiv || !errorDiv.classList.contains('error-message')) {
-        errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        input.parentNode.insertBefore(errorDiv, input.nextSibling);
-    }
-    errorDiv.textContent = message;
-} 
+  // Remove any existing error on this input first
+  clearError(input);
+  const err = document.createElement('div');
+  err.className = 'error-message';
+  err.textContent = message;
+  input.parentNode.insertBefore(err, input.nextSibling);
+  input.classList.add('input-err');
+}
+
+function clearError(input) {
+  const next = input.nextElementSibling;
+  if (next && next.classList.contains('error-message')) next.remove();
+  input.classList.remove('input-err');
+}
+
+function clearAllErrors() {
+  document.querySelectorAll('.error-message').forEach(e => e.remove());
+  document.querySelectorAll('.input-err').forEach(e => e.classList.remove('input-err'));
+}
+
 
 //Logout
 function doLogout(){
@@ -238,22 +265,6 @@ function updateAndAnimate() {
 window.onload = () => {
   renderUC();
   updateAndAnimate();
-  const saved = localStorage.getItem("theme");
-  const portal = document.getElementById("portal");
-
-  // Default is light — only add dark if explicitly saved as dark
-  if (saved === "dark") {
-    portal.classList.add("dark");
-  } else {
-    portal.classList.remove("dark");          // ensure no stale dark class
-    localStorage.setItem("theme", "light");   // normalise storage
-  }
-
-  initThemeToggle();
-
-  // Sync button emoji to current state
-  const btn = document.getElementById("themeToggle");
-  if (btn) btn.textContent = portal.classList.contains("dark") ? "☀️" : "🌙";
 };
 
 function renderAA(){
@@ -386,21 +397,6 @@ function tn(){notifOpen=!notifOpen;document.getElementById('NP').classList.toggl
 document.addEventListener('click',e=>{
   if(notifOpen&&!e.target.closest('.nbell')&&!e.target.closest('.np')){notifOpen=false;document.getElementById('NP').classList.remove('show');}
 });
-
-// ── THEME TOGGLE ──
-function initThemeToggle() {
-  const portal = document.getElementById("portal");
-  const btn = document.getElementById("themeToggle");
-  if (!btn || !portal) return;
-
-  btn.onclick = () => {
-    portal.classList.toggle("dark");
-    const isDark = portal.classList.contains("dark");
-    btn.textContent = isDark ? "☀️" : "🌙";
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  };
-}
-
 
 // ── CHATBOT ──
 const BOTS={submit:'Go to Submit Complaint in the sidebar. AI can auto-categorize your issue!',status:'Use Track Status and enter your GRV-001 format ID.',hello:'Hello! 👋 How can I assist you today?',hi:'Hi there! 😊 Ask me anything about the portal!',help:'I can help with submitting complaints, tracking status, and account settings.',priority:'High = urgent civic issues (no water/power, dangerous roads). Low = general improvements.',default:'I can help with complaints and portal navigation. Could you rephrase? 🤔'};
