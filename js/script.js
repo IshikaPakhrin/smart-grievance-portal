@@ -241,11 +241,19 @@ window.onload = () => {
   const saved = localStorage.getItem("theme");
   const portal = document.getElementById("portal");
 
-  if(saved === "dark"){
+  // Default is light — only add dark if explicitly saved as dark
+  if (saved === "dark") {
     portal.classList.add("dark");
+  } else {
+    portal.classList.remove("dark");          // ensure no stale dark class
+    localStorage.setItem("theme", "light");   // normalise storage
   }
 
-  initThemeToggle(); 
+  initThemeToggle();
+
+  // Sync button emoji to current state
+  const btn = document.getElementById("themeToggle");
+  if (btn) btn.textContent = portal.classList.contains("dark") ? "☀️" : "🌙";
 };
 
 function renderAA(){
@@ -380,21 +388,19 @@ document.addEventListener('click',e=>{
 });
 
 // ── THEME TOGGLE ──
-function initThemeToggle(){
+function initThemeToggle() {
   const portal = document.getElementById("portal");
   const btn = document.getElementById("themeToggle");
-
-  if(!btn || !portal) return; // safety
+  if (!btn || !portal) return;
 
   btn.onclick = () => {
     portal.classList.toggle("dark");
-
     const isDark = portal.classList.contains("dark");
     btn.textContent = isDark ? "☀️" : "🌙";
-
     localStorage.setItem("theme", isDark ? "dark" : "light");
   };
 }
+
 
 // ── CHATBOT ──
 const BOTS={submit:'Go to Submit Complaint in the sidebar. AI can auto-categorize your issue!',status:'Use Track Status and enter your GRV-001 format ID.',hello:'Hello! 👋 How can I assist you today?',hi:'Hi there! 😊 Ask me anything about the portal!',help:'I can help with submitting complaints, tracking status, and account settings.',priority:'High = urgent civic issues (no water/power, dangerous roads). Low = general improvements.',default:'I can help with complaints and portal navigation. Could you rephrase? 🤔'};

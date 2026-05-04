@@ -53,8 +53,22 @@
   --sh:0 20px 60px rgba(0,0,0,0.55);
   --sh-b:0 4px 28px rgba(59,130,246,0.2);
 }
-html,body{height:100%;font-family:var(--font-body);background:var(--bg);color:var(--text);overflow:hidden;font-size:15px}
-#app{height:100vh;overflow:hidden;position:relative}
+html, body {
+  height: 100%;
+  font-family: var(--font-body);
+  /* ↓ only set bg/color on body when there's NO portal (landing page) */
+  background: var(--land-bg);
+  color: var(--text);
+  overflow: hidden;
+  font-size: 15px;
+}
+
+/* When portal is active, let portal control its own bg */
+body:has(#portal) {
+  background: #ffffff; /* neutral — portal paints its own bg */
+}
+
+#app { height: 100vh; overflow: hidden; position: relative; }
 
 /* ═══════════════════════════════════════
    GLOBAL BG (portals)
