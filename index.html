@@ -9,25 +9,17 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!-- Portal BG (hidden behind landing) -->
 <div class="bg-wrap"><div class="bg-grid"></div></div>
 <div id="cur"></div><div id="cdot"></div>
 <div class="tc2" id="TC"></div>
 <div id="app">
 
-<!-- ═══════════════════════════════════════════
-     LANDING — 5-section premium scrolling page
-═══════════════════════════════════════════ -->
+<!-- LANDING -->
 <div id="landing" class="page active">
-  <!-- Fixed background layers -->
   <div class="land-mesh"></div>
   <div class="land-grid"></div>
-
-  <!-- ── TOP NAV ── -->
   <nav class="l-nav">
-    <div class="l-nav-logo">
-      <div class="l-logo-dot"></div>SmartGrieve
-    </div>
+    <div class="l-nav-logo"><div class="l-logo-dot"></div>SmartGrieve</div>
     <div class="l-nav-center">
       <a href="#how">How It Works</a>
       <a href="#stats">System Highlights</a>
@@ -40,118 +32,54 @@
     </div>
   </nav>
 
-  <!-- ── SECTION 1: HERO (100vh) ── -->
   <section class="l-sec l-hero" id="hero">
     <div class="l-shapes">
-      <div class="shape s1"></div>
-      <div class="shape s2"></div>
-      <div class="shape s3"></div>
-      <div class="shape s4"></div>
-      <div class="shape s5"></div>
+      <div class="shape s1"></div><div class="shape s2"></div><div class="shape s3"></div>
+      <div class="shape s4"></div><div class="shape s5"></div>
     </div>
-    <div class="l-eyebrow">
-      <span class="eyebrow-dot"></span>
-      AI-Powered Civic Grievance System
-    </div>
-    <h1 class="l-hero-h">
-      Raise Your Voice.<br>
-      <span class="neon-word" data-t="Real">Track</span> the Action.
-    </h1>
-    <p class="l-hero-sub">
-      An AI-enabled public grievance system integrating automated classification, real-time tracking, and transparent resolution workflows.
-    </p>
+    <div class="l-eyebrow"><span class="eyebrow-dot"></span>AI-Powered Civic Grievance System</div>
+    <h1 class="l-hero-h">Raise Your Voice.<br><span class="neon-word" data-t="Real">Track</span> the Action.</h1>
+    <p class="l-hero-sub">An AI-enabled public grievance system integrating automated classification, real-time tracking, and transparent resolution workflows.</p>
     <div class="l-hero-btns">
       <button class="btn-neon" onclick="gp('login-page')">⚡ Access Citizen Portal</button>
       <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Learn How It Works ↓</button>
     </div>
   </section>
 
-  <!-- ── SECTION 2: HOW IT WORKS ── -->
   <section class="l-sec l-how" id="how">
     <div class="sec-label">/ 01 &nbsp; Process</div>
     <h2 class="sec-h">From Complaint<br>to Resolution.</h2>
     <p class="sec-sub">A streamlined four-step process that ensures every civic complaint reaches the right authority — fast and transparently.</p>
     <div class="how-grid">
-      <div class="how-card rev">
-        <div class="how-num">01</div>
-        <div class="how-ico">📝</div>
-        <h4>Smart Submission</h4>
-        <p>Citizens submit complaints via our web portal. AI pre-fills category and department based on description, reducing errors.</p>
+      <div class="how-card rev"><div class="how-num">01</div><div class="how-ico">📝</div><h4>Smart Submission</h4><p>Citizens submit complaints via our web portal. AI pre-fills category and department based on description, reducing errors.</p></div>
+      <div class="how-card rev"><div class="how-num">02</div><div class="how-ico">🤖</div><h4>AI Classification</h4><p>Our AI engine auto-categorizes issues, detects urgency level, and routes the complaint to the correct department within seconds.</p></div>
+      <div class="how-card rev"><div class="how-num">03</div><div class="how-ico">📡</div><h4>Real-Time Tracking</h4><p>Citizens track complaint status live — Submitted → Accepted → In Review → Resolved — with full transparency at every step.</p></div>
+      <div class="how-card rev"><div class="how-num">04</div><div class="how-ico">✅</div><h4>Transparent Resolution</h4><p>Authorities resolve and document outcomes. Citizens receive confirmation and a resolution timeline for complete accountability.</p></div>
+    </div>
+  </section>
+
+  <section class="l-sec l-stats" id="stats" style="padding:120px 20px;text-align:center;">
+    <div>
+      <div style="color:#c7f000;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">/ 02 &nbsp; System Highlights</div>
+      <h2 style="font-size:48px;font-weight:800;margin-bottom:20px;">Intelligent & Transparent<br><span style="color:#c7f000;">Grievance Management</span></h2>
+      <p style="color:#94a3b8;font-size:16px;margin-bottom:60px;">Core capabilities of the Smart Public Grievance Redressal System prototype.</p>
+    </div>
+    <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,0.04);border-radius:16px;padding:40px 30px;width:250px;border:1px solid rgba(255,255,255,0.05);">
+        <div style="font-size:48px;font-weight:800;color:#c7f000;text-shadow:0 0 20px rgba(199,240,0,0.7);margin-bottom:12px;">92%</div>
+        <div style="font-size:14px;color:#cbd5e1;line-height:1.6;">AI Classification Accuracy<br>(Test Dataset)</div>
       </div>
-      <div class="how-card rev">
-        <div class="how-num">02</div>
-        <div class="how-ico">🤖</div>
-        <h4>AI Classification</h4>
-        <p>Our AI engine auto-categorizes issues, detects urgency level, and routes the complaint to the correct department within seconds.</p>
+      <div style="background:rgba(255,255,255,0.04);border-radius:16px;padding:40px 30px;width:250px;border:1px solid rgba(255,255,255,0.05);">
+        <div style="font-size:48px;font-weight:800;color:#c7f000;text-shadow:0 0 20px rgba(199,240,0,0.7);margin-bottom:12px;">AI</div>
+        <div style="font-size:14px;color:#cbd5e1;">Automated Complaint Routing</div>
       </div>
-      <div class="how-card rev">
-        <div class="how-num">03</div>
-        <div class="how-ico">📡</div>
-        <h4>Real-Time Tracking</h4>
-        <p>Citizens track complaint status live — Submitted → Accepted → In Review → Resolved — with full transparency at every step.</p>
-      </div>
-      <div class="how-card rev">
-        <div class="how-num">04</div>
-        <div class="how-ico">✅</div>
-        <h4>Transparent Resolution</h4>
-        <p>Authorities resolve and document outcomes. Citizens receive confirmation and a resolution timeline for complete accountability.</p>
+      <div style="background:rgba(255,255,255,0.04);border-radius:16px;padding:40px 30px;width:250px;border:1px solid rgba(255,255,255,0.05);">
+        <div style="font-size:48px;font-weight:800;color:#c7f000;text-shadow:0 0 20px rgba(199,240,0,0.7);margin-bottom:12px;">Live</div>
+        <div style="font-size:14px;color:#cbd5e1;">Real-Time Status Tracking</div>
       </div>
     </div>
   </section>
 
-  <!-- ── SECTION 3: IMPACT STATS Previously── -->
-  <!-- ── SECTION 3: SYSTEM HIGHLIGHTS ── -->
-<section class="l-sec l-stats" id="stats" style="padding:120px 20px;text-align:center;">
-
-  <div>
-    <div style="color:#c7f000;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">
-      / 02 &nbsp; System Highlights
-    </div>
-
-    <h2 style="font-size:48px;font-weight:800;margin-bottom:20px;">
-      Intelligent & Transparent<br>
-      <span style="color:#c7f000;">Grievance Management</span>
-    </h2>
-
-    <p style="color:#94a3b8;font-size:16px;margin-bottom:60px;">
-      Core capabilities of the Smart Public Grievance Redressal System prototype.
-    </p>
-  </div>
-
-  <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;">
-
-    <div style="background:rgba(255,255,255,0.04);border-radius:16px;padding:40px 30px;width:250px;border:1px solid rgba(255,255,255,0.05);">
-      <div style="font-size:48px;font-weight:800;color:#c7f000;text-shadow:0 0 20px rgba(199,240,0,0.7);margin-bottom:12px;">
-        92%
-      </div>
-      <div style="font-size:14px;color:#cbd5e1;line-height:1.6;">
-        AI Classification Accuracy<br>(Test Dataset)
-      </div>
-    </div>
-
-    <div style="background:rgba(255,255,255,0.04);border-radius:16px;padding:40px 30px;width:250px;border:1px solid rgba(255,255,255,0.05);">
-      <div style="font-size:48px;font-weight:800;color:#c7f000;text-shadow:0 0 20px rgba(199,240,0,0.7);margin-bottom:12px;">
-        AI
-      </div>
-      <div style="font-size:14px;color:#cbd5e1;">
-        Automated Complaint Routing
-      </div>
-    </div>
-
-    <div style="background:rgba(255,255,255,0.04);border-radius:16px;padding:40px 30px;width:250px;border:1px solid rgba(255,255,255,0.05);">
-      <div style="font-size:48px;font-weight:800;color:#c7f000;text-shadow:0 0 20px rgba(199,240,0,0.7);margin-bottom:12px;">
-        Live
-      </div>
-      <div style="font-size:14px;color:#cbd5e1;">
-        Real-Time Status Tracking
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-  <!-- ── SECTION 4: DASHBOARD PREVIEW ── -->
   <section class="l-sec l-dash-prev" id="dashboard">
     <div class="sec-label">/ 03 &nbsp; Platform</div>
     <div class="dash-layout">
@@ -166,7 +94,6 @@
           <li><span class="tick">✦</span>Analytics and reporting for performance monitoring</li>
         </ul>
       </div>
-      <!-- Inline UI Mockup -->
       <div class="dash-mockup rev">
         <div class="mock-bar">
           <div class="mock-dot" style="background:#EF4444"></div>
@@ -195,25 +122,13 @@
           <div class="mock-track">
             <div class="mock-track-lbl">Complaint Progress — GRV-001</div>
             <div class="mock-steps">
-              <div class="mock-step">
-                <div class="mock-step-dot ms-done">✓</div>
-                <div class="mock-step-lbl done">Submitted</div>
-              </div>
+              <div class="mock-step"><div class="mock-step-dot ms-done">✓</div><div class="mock-step-lbl done">Submitted</div></div>
               <div class="mock-conn done"></div>
-              <div class="mock-step">
-                <div class="mock-step-dot ms-done">✓</div>
-                <div class="mock-step-lbl done">Accepted</div>
-              </div>
+              <div class="mock-step"><div class="mock-step-dot ms-done">✓</div><div class="mock-step-lbl done">Accepted</div></div>
               <div class="mock-conn done"></div>
-              <div class="mock-step">
-                <div class="mock-step-dot ms-done">✓</div>
-                <div class="mock-step-lbl done">In Review</div>
-              </div>
+              <div class="mock-step"><div class="mock-step-dot ms-done">✓</div><div class="mock-step-lbl done">In Review</div></div>
               <div class="mock-conn done"></div>
-              <div class="mock-step">
-                <div class="mock-step-dot ms-act">✓</div>
-                <div class="mock-step-lbl act">Resolved</div>
-              </div>
+              <div class="mock-step"><div class="mock-step-dot ms-act">✓</div><div class="mock-step-lbl act">Resolved</div></div>
             </div>
           </div>
         </div>
@@ -221,7 +136,6 @@
     </div>
   </section>
 
-  <!-- ── SECTION 5: CTA ── -->
   <section class="l-sec l-cta" id="cta">
     <h2>Ready to Get<br><span style="color:var(--neon)">Started?</span></h2>
     <p>Your concerns. Structured. Tracked. Resolved.</p>
@@ -237,9 +151,7 @@
   </section>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     LOGIN
-═══════════════════════════════════════════ -->
+<!-- LOGIN -->
 <div id="login-page" class="page">
   <div class="auth-wrap">
     <div class="auth-logo">
@@ -255,14 +167,12 @@
     <div class="fg"><label>Email Address</label><input type="email" id="le" placeholder="you@example.com"></div>
     <div class="fg"><label>Password</label><input type="password" id="lp" placeholder="••••••••"></div>
     <button class="btn btn-p" style="width:100%;justify-content:center" onclick="doLogin()">Sign In →</button>
-    <div class="auth-ft">No account? <a onclick="gp('register-page')">Register here</a> &nbsp;·&nbsp; <a onclick="gp('landing')">← </a></div>
-    <div class="demo-hint"><b>Demo mode:</b> Enter any name, email & password. Toggle User / Admin above.</div>Back
+    <div class="auth-ft">No account? <a onclick="gp('register-page')">Register here</a> &nbsp;·&nbsp; <a onclick="gp('landing')">← Back to Homepage</a></div>
+    <div class="demo-hint"><b>Demo mode:</b> Enter any name, email & password. Toggle User / Admin above.</div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     REGISTER
-═══════════════════════════════════════════ -->
+<!-- REGISTER -->
 <div id="register-page" class="page">
   <div class="auth-wrap">
     <div class="auth-logo">
@@ -274,19 +184,14 @@
     <div class="fg"><label>Email Address</label><input type="email" id="re" placeholder="you@example.com"></div>
     <div class="fg"><label>Password</label><input type="password" id="rp" placeholder="Minimum 8 characters"></div>
     <div class="fg"><label>Account Type</label>
-      <select id="rr">
-        <option value="user">Regular User</option>
-        <option value="admin">Administrator</option>
-      </select>
+      <select id="rr"><option value="user">Regular User</option><option value="admin">Administrator</option></select>
     </div>
     <button class="btn btn-p" style="width:100%;justify-content:center" onclick="doRegister()">Create Account →</button>
-    <div class="auth-ft">Have an account? <a onclick="gp('login-page')">Sign in</a> &nbsp;·&nbsp; <a onclick="gp('landing')">← Back to HomePage</a></div>
+    <div class="auth-ft">Have an account? <a onclick="gp('login-page')">Sign in</a> &nbsp;·&nbsp; <a onclick="gp('landing')">← Back to Homepage</a></div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     USER PORTAL
-═══════════════════════════════════════════ -->
+<!-- USER PORTAL -->
 <div id="user-portal" class="page">
   <div class="sb">
     <div class="sb-logo">
@@ -307,12 +212,13 @@
       <div class="sb-uinfo"><h4 id="usn">User</h4><p>Regular User</p></div>
     </div>
   </div>
-
   <div class="mc">
     <div class="mh">
       <div><h1 id="ust">Dashboard</h1><p id="uss">Welcome back, <span id="uwn">User</span>! Here's your overview.</p></div>
       <div class="hact">
-        <button class="themeToggle" id="themeToggleU" onclick="doThemeToggle()">🌙</button>
+        <button class="themeToggle" id="themeToggleU" onclick="doThemeToggle()">
+          <span class="theme-lbl">Theme</span><span class="theme-icon">🌙</span>
+        </button>
         <button class="nbell" onclick="tn()">🔔<span class="ndot"></span></button>
         <button class="btn btn-o btn-sm" onclick="doLogout()">Logout</button>
       </div>
@@ -367,22 +273,10 @@
           <div class="fg"><label>Complaint Title *</label><input type="text" id="ct" placeholder="Brief summary of your issue"></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
             <div class="fg"><label>Category *</label>
-              <select id="cc">
-                <option value="">Select category…</option>
-                <option>Water Supply Disruption</option>
-                <option>Electrical Infrastructure Failure</option>
-                <option>Road &amp; Pavement Deterioration</option>
-                <option>Sanitation &amp; Waste Management</option>
-              </select>
+              <select id="cc"><option value="">Select category…</option><option>Water Supply Disruption</option><option>Electrical Infrastructure Failure</option><option>Road &amp; Pavement Deterioration</option><option>Sanitation &amp; Waste Management</option></select>
             </div>
             <div class="fg"><label>Department *</label>
-              <select id="cdept">
-                <option value="">Select department…</option>
-                <option>Water Department</option>
-                <option>Electricity Department</option>
-                <option>Road Department</option>
-                <option>Sanitation Department</option>
-              </select>
+              <select id="cdept"><option value="">Select department…</option><option>Water Department</option><option>Electricity Department</option><option>Road Department</option><option>Sanitation Department</option></select>
             </div>
           </div>
           <div class="fg"><label>Address / Location of Issue *</label><input type="text" id="co" placeholder="Enter the address or location where the issue occurred"></div>
@@ -408,13 +302,7 @@
       <div class="fb">
         <input class="sb-inp" placeholder="🔍 Search complaints…" oninput="fC(this.value)">
         <select class="fsel" onchange="fS(this.value)"><option value="">All Status</option><option>Pending</option><option>Accepted</option><option>Resolved</option><option>Rejected</option></select>
-        <select class="fsel">
-          <option value="">All Categories</option>
-          <option>Water Supply Disruption</option>
-          <option>Electrical Infrastructure Failure</option>
-          <option>Road &amp; Pavement Deterioration</option>
-          <option>Sanitation &amp; Waste Management</option>
-        </select>
+        <select class="fsel"><option value="">All Categories</option><option>Water Supply Disruption</option><option>Electrical Infrastructure Failure</option><option>Road &amp; Pavement Deterioration</option><option>Sanitation &amp; Waste Management</option></select>
       </div>
       <div class="gc">
         <table class="ct"><thead><tr><th>ID</th><th>Title</th><th>Category</th><th>Priority</th><th>Status</th><th>Date</th><th>Action</th></tr></thead><tbody id="UCB"></tbody></table>
@@ -433,7 +321,7 @@
       <div id="tr" style="display:none;max-width:640px" class="gc"></div>
     </div>
 
-    <!-- U-PROFILE — no defaults for phone/city/state -->
+    <!-- U-PROFILE -->
     <div id="u-prof" class="sv">
       <div class="gc" style="max-width:520px">
         <div class="av av-lg" id="pav">JD</div>
@@ -442,12 +330,8 @@
         <div class="pcg">
           <div class="fg"><label>Full Name</label><input type="text" id="pname" placeholder="Your full name"></div>
           <div class="fg"><label>Email</label><input type="email" id="pemail" placeholder="your@email.com"></div>
-          <div class="fg">
-            <label>Phone</label>
-            <div class="phone-wrap">
-              <span class="phone-prefix">+91</span>
-              <input type="tel" id="pphone" placeholder="Enter your phone number">
-            </div>
+          <div class="fg"><label>Phone</label>
+            <div class="phone-wrap"><span class="phone-prefix">+91</span><input type="tel" id="pphone" placeholder="Enter your phone number"></div>
           </div>
           <div class="fg"><label>City</label><input type="text" id="pcity" placeholder="Enter your city"></div>
           <div class="fg" style="grid-column:1 / -1"><label>State</label>
@@ -478,9 +362,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     ADMIN PORTAL
-═══════════════════════════════════════════ -->
+<!-- ADMIN PORTAL -->
 <div id="admin-portal" class="page">
   <div class="sb">
     <div class="sb-logo">
@@ -505,7 +387,9 @@
     <div class="mh">
       <div><h1 id="ast">Admin Dashboard</h1><p id="ass">System overview & complaint management</p></div>
       <div class="hact">
-        <button class="themeToggle" id="themeToggleA" onclick="doThemeToggle()">🌙</button>
+        <button class="themeToggle" id="themeToggleA" onclick="doThemeToggle()">
+          <span class="theme-lbl">Theme</span><span class="theme-icon">🌙</span>
+        </button>
         <button class="nbell" onclick="tn()">🔔<span class="ndot"></span></button>
         <button class="btn btn-g btn-sm" onclick="exportR()">📥 Export CSV</button>
         <button class="btn btn-o btn-sm" onclick="doLogout()">Logout</button>
@@ -601,7 +485,7 @@
   </div>
 </div>
 
-<!-- CHATBOT — user portal only -->
+<!-- CHATBOT -->
 <button class="cfab" id="chatFab" onclick="tChat()" title="AI Assistant">🤖</button>
 <div class="cw2" id="CW">
   <div class="ch2">
@@ -617,6 +501,7 @@
     <button class="cs" onclick="sChat()">➤</button>
   </div>
 </div>
+
 <script src="js/script.js"></script>
 </body>
 </html>
